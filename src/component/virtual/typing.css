@@ -1,0 +1,73 @@
+/* === Efek mengetik satu baris dengan looping dan jeda 5 detik === */
+.typing-line {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #fff;
+  animation:
+    typing 10s steps(40, end),
+    blink 0.75s step-end infinite,
+    float 3s ease-in-out infinite alternate paused; /* mulai paused */
+  animation-delay: 0s, 0s, 30s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+/* === Efek mengetik berulang setiap 9 detik (4s mengetik + 5s jeda) === */
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  45% {
+    width: 100%;
+  }
+  55% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+/* === Cursor blinking === */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* === Efek mengambang setelah teks selesai diketik === */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* === Lingkaran merah === */
+.dot {
+  display: inline-block;
+  background-color: #dc2626;
+  width: 0.4em; /* diperkecil dari 0.6em */
+  height: 0.4em;
+  border-radius: 50%;
+  margin: 0 0.3em;
+  opacity: 0;
+  animation: appearDot 0.2s ease-in forwards;
+  animation-delay: 1.8s;
+}
+
+/* === Lingkaran merah muncul saat mengetik === */
+@keyframes appearDot {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
